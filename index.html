@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyakorló Feladatok</title>
+    
+    <!-- Meta and SEO -->
+    <meta name="description" content="Matematika feladatok részletes, lépésről lépésre kidolgozott megoldásokkal és elméleti háttérrel.">
+    <link rel="icon" href="data:,">
+    
+    <!-- MathJax 3 for Ultra-Crisp LaTeX Formula Rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                enableMenu: false
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Stylesheet & Data & App Script -->
+    <link rel="stylesheet" href="style.css?v=7">
+    <script src="app.js?v=7" defer></script>
+</head>
+<body>
+
+    <!-- Main App Layout Wrapper -->
+    <div class="app-layout-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="app-sidebar" id="app-sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-brand">Feladatgyűjtemény</h1>
+                <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Bezárás">◀</button>
+            </div>
+            
+            <div class="sidebar-search">
+                <div class="search-bar-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="erettsegi-search-input" class="search-bar-input" placeholder="Keresés..." aria-label="Feladat keresése">
+                </div>
+            </div>
+
+            <!-- Sidebar View Grouping Toggles (Categories vs Lessons) -->
+            <div class="sidebar-view-selector">
+                <button class="btn-view-tab active" id="btn-view-categories">Témakörök</button>
+                <button class="btn-view-tab" id="btn-view-lessons">Órák</button>
+            </div>
+
+            <!-- Vertical Category & Task Accordions -->
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <!-- Rendered dynamically by app.js -->
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="app-main-content">
+            <!-- Sidebar Open Toggle Button (visible when sidebar is closed) -->
+            <header class="main-header">
+                <button class="sidebar-open-btn" id="sidebar-open-btn" aria-label="Menü kinyitása">☰ Menü</button>
+                <div class="header-title-wrapper">
+                    <span class="header-subtitle">Matematika Felkészítő</span>
+                </div>
+                <button class="btn-login-header" id="btn-login-header">Bejelentkezés</button>
+            </header>
+
+            <div class="active-task-wrapper">
+                <!-- Currently active task rendered here -->
+                <div id="active-task-container">
+                    <!-- Loaded dynamically by app.js -->
+                </div>
+            </div>
+
+            <!-- Bottom Task Navigation -->
+            <footer class="task-navigation-footer">
+                <button class="btn-task-nav btn-task-prev" id="btn-task-prev" disabled>◀ Előző feladat</button>
+                <button class="btn-task-nav btn-task-next" id="btn-task-next" disabled>Következő feladat ▶</button>
+            </footer>
+        </main>
+
+    </div>
+
+    <!-- Login Modal Overlay -->
+    <div class="login-modal-overlay hidden" id="login-modal-overlay">
+        <div class="login-modal-card">
+            <button class="login-modal-close" id="login-modal-close" aria-label="Bezárás">&times;</button>
+            <div class="login-modal-header">
+                <span class="login-modal-icon">🔐</span>
+                <h2 class="login-modal-title">Bejelentkezés</h2>
+                <p class="login-modal-subtitle">Add meg a felhasználóneved és a jelszavad a feladatok feloldásához.</p>
+            </div>
+            <form class="login-modal-form" id="login-modal-form">
+                <div class="form-group">
+                    <label for="login-username" class="form-label">Felhasználónév</label>
+                    <input type="text" id="login-username" class="form-input" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="login-password" class="form-label">Jelszó</label>
+                    <input type="password" id="login-password" class="form-input" required autocomplete="current-password">
+                </div>
+                <div class="login-error-msg hidden" id="login-error-msg">⚠️ Helytelen felhasználónév vagy jelszó!</div>
+                <button type="submit" class="btn-login-submit">Bejelentkezés</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
